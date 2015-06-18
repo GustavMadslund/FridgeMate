@@ -6,14 +6,34 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+
+import java.util.Date;
 
 
 public class AddItemActivity extends Activity {
+    // 7 days in milliseconds - 7 * 24 * 60 * 60 * 1000
+    private static final int SEVEN_DAYS = 604800000;
+    // NEGER
+
+    private static String dateString;
+    private static TextView dateView;
+
+    private Date mDate;
+    private RadioGroup mPlaceRadioGroup;
+    private EditText mTitleText;
+    private RadioButton mDefaultPlaceButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_item);
+
+        mTitleText = (EditText) findViewById(R.id.title);
+
     }
 
     @Override
