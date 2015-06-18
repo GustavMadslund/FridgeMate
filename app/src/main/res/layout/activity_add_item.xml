@@ -22,7 +22,7 @@
         android:id="@+id/linearLayout3">
 
         <ImageView
-            android:layout_width="40dp"
+            android:layout_width="@dimen/abc_action_bar_progress_bar_size"
             android:layout_height="40dp"
             android:id="@+id/imageName"
             android:src="@drawable/abc_btn_radio_to_on_mtrl_000"
@@ -81,14 +81,16 @@
             android:layout_height="40dp"
             android:id="@+id/imageFridgeFreezer"
             android:src="@drawable/abc_btn_check_to_on_mtrl_015"
-            android:layout_marginLeft="20dp" />
+            android:layout_marginLeft="20dp"
+            android:layout_weight="0" />
 
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:id="@+id/radioGroup"
-            android:layout_marginLeft="20dp">
+            android:layout_marginLeft="20dp"
+            android:layout_weight="0.5">
 
             <RadioButton
                 android:layout_width="wrap_content"
@@ -123,21 +125,21 @@
             android:layout_height="40dp"
             android:id="@+id/imageDate"
             android:src="@drawable/abc_btn_radio_to_on_mtrl_000"
-            android:layout_marginLeft="20dp" />
+            android:layout_marginLeft="20dp"
+            android:layout_weight="0.5" />
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="0.16">
+            android:layout_width="85dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Expires:"
                 android:id="@+id/textViewExpires"
-                android:textColor="@color/abc_background_cache_hint_selector_material_dark" />
+                android:textColor="#ff000000" />
 
             <TextView
                 android:layout_width="wrap_content"
