@@ -61,6 +61,18 @@ public class FoodItem {
 
     public void setDate(Date mDate) {this.mDate = mDate;}
 
+    //Take a set of String data values and
+    // package them for transport in an Intent
+
+    public static void packageIntent(Intent intent, String title,
+           Integer quantity, Place place, String date) {
+
+        intent.putExtra(FoodItem.TITLE, title);
+        intent.putExtra(FoodItem.QUANTITY, quantity.toString());
+        intent.putExtra(FoodItem.PLACE, place.toString());
+        intent.putExtra(FoodItem.DATE, date);
+    }
+
 
 
 
