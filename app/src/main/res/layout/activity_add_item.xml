@@ -135,17 +135,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Expires"
+                android:text="Expires:"
                 android:id="@+id/textViewExpires"
                 android:textColor="@color/abc_background_cache_hint_selector_material_dark" />
 
-            <EditText
-                android:layout_width="87dp"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="date"
-                android:ems="10"
-                android:id="@+id/editTextDate"
-                android:text="26 / 06 / 2015" />
+                android:text="Some dates"
+                android:id="@+id/textView"
+                android:textColor="#ff7a7a7a" />
+
         </LinearLayout>
 
         <Button
