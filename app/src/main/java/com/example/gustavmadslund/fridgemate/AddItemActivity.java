@@ -74,23 +74,29 @@ public class AddItemActivity extends Activity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            case R.id.action_settings: {
+                return true;
+            }
+            case R.id.action_add: {
+                submitItem();
+                return true;
+            }
+            default: {
+                return super.onOptionsItemSelected(item);
+            }
         }
+    }
 
-        if (id == R.id.action_add) {
-            String titleString = getToDoTitle();
-            Integer quantity = getQuantity();
-            Place place = getPlace();
-            Intent data = new Intent();
-            FoodItem.packageIntent(data,titleString,quantity,place,dateString);
+    private void submitItem() {
+        String titleString = getToDoTitle();
+        Integer quantity = getQuantity();
+        Place place = getPlace();
+        Intent data = new Intent();
+        FoodItem.packageIntent(data, titleString, quantity, place, dateString);
 
-        }
-
-        return super.onOptionsItemSelected(item);
+        setResult(RESULT_OK, data);
+        finish();
     }
 
     private void setDefaultDateTime() {
