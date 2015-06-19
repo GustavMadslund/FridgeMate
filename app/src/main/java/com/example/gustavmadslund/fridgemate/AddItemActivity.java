@@ -47,6 +47,11 @@ public class AddItemActivity extends Activity {
         mPlaceRadioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         dateView = (TextView) findViewById(R.id.textView);
 
+        //Set hint text
+        mTitleText.setHint("Name");
+        mQuantity.setHint("Quantity");
+
+
         //Set the default date
 
         setDefaultDateTime();

@@ -3,126 +3,138 @@
     android:layout_height="match_parent"
     tools:context="com.example.gustavmadslund.fridgemate.AddItemActivity">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/imageView">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/title"
+            android:layout_weight="0.2"
+            android:drawableLeft="@drawable/abc_btn_radio_to_on_mtrl_000"
+            android:drawablePadding="10dp"
+            android:layout_below="@+id/imageView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/quantityItem"
+            android:inputType="number"
+            android:layout_weight="0.2"
+            android:drawableLeft="@drawable/abc_btn_radio_to_on_mtrl_015"
+            android:drawablePadding="10dp"
+            android:layout_below="@+id/title"
+            android:layout_alignLeft="@+id/title"
+            android:layout_alignStart="@+id/title"
+            android:layout_alignRight="@+id/title"
+            android:layout_alignEnd="@+id/title"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/radioGroup"
+            android:layout_weight="0.2"
+            android:layout_below="@+id/quantityItem"
+            android:layout_alignLeft="@+id/quantityItem"
+            android:layout_alignStart="@+id/quantityItem"
+            android:paddingRight="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="25dp">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fridge"
+                android:paddingLeft="10dp"
+                android:id="@+id/radioButtonFridge"
+                android:checked="false"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Freezer"
+                android:paddingLeft="10dp"
+                android:id="@+id/radioButtonFreezer"
+                android:checked="false"
+                android:layout_marginLeft="20dp" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_weight="0.2"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:weightSum="1"
+            android:id="@+id/linearLayout"
+            android:layout_below="@+id/radioGroup"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="20dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.2"
+                android:id="@+id/imageDate"
+                android:src="@drawable/abc_btn_radio_to_on_mtrl_000"
+                android:layout_marginLeft="20dp" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_weight="0.3"
+                android:layout_width="85dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Expires:"
+                    android:id="@+id/textViewExpires"
+                    android:textColor="#ff000000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Some dates"
+                    android:id="@+id/textView"
+                    android:textColor="#ff7a7a7a" />
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4"
+                android:text="Set Expiration Date"
+                android:id="@+id/button"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
     <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="180dp"
+        android:layout_height="200dp"
         android:id="@+id/imageView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:src="@color/hint_foreground_material_light" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/title"
-        android:layout_weight="1"
-        android:text="Name"
-        android:drawableLeft="@drawable/abc_btn_radio_to_on_mtrl_000"
-        android:drawablePadding="10dp"
-        android:layout_below="@+id/imageView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/quantityItem"
-        android:layout_weight="1"
-        android:text="Quantity"
-        android:drawableLeft="@drawable/abc_btn_radio_to_on_mtrl_015"
-        android:drawablePadding="10dp"
-        android:layout_below="@+id/title"
-        android:layout_alignLeft="@+id/title"
-        android:layout_alignStart="@+id/title"
-        android:layout_alignRight="@+id/title"
-        android:layout_alignEnd="@+id/title"
-        android:layout_marginTop="20dp" />
-
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/radioGroup"
-        android:layout_below="@+id/quantityItem"
-        android:layout_alignLeft="@+id/quantityItem"
-        android:layout_alignStart="@+id/quantityItem"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="5dp">
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fridge"
-            android:drawableLeft="@drawable/abc_btn_check_to_on_mtrl_015"
-            android:drawablePadding="10dp"
-            android:id="@+id/radioButtonFridge"
-            android:checked="false"/>
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/abc_btn_check_to_on_mtrl_015"
-            android:drawablePadding="10dp"
-            android:text="Freezer"
-            android:id="@+id/radioButtonFreezer"
-            android:checked="false"
-            android:layout_marginLeft="20dp" />
-    </RadioGroup>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:weightSum="1"
-        android:id="@+id/linearLayout"
-        android:layout_below="@+id/radioGroup"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:id="@+id/imageDate"
-            android:src="@drawable/abc_btn_radio_to_on_mtrl_000"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="0.5" />
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="85dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="20dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Expires:"
-                android:id="@+id/textViewExpires"
-                android:textColor="#ff000000" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Some dates"
-                android:id="@+id/textView"
-                android:textColor="#ff7a7a7a" />
-
-        </LinearLayout>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Set Expiration Date"
-            android:id="@+id/button"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp" />
-
-    </LinearLayout>
 
 </RelativeLayout>
