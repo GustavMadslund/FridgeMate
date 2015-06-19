@@ -13,6 +13,8 @@ import com.example.gustavmadslund.fridgemate.FoodItem.Place;
 
 public class EditItemActivity extends AppCompatActivity {
 
+    private static final String TAG = "Fridge-Log";
+
     private TextView dateView;
     private TextView mTitleText;
     private TextView mQuantity;
