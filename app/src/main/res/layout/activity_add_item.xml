@@ -11,114 +11,79 @@
         android:layout_centerHorizontal="true"
         android:src="@color/hint_foreground_material_light" />
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:layout_weight="1"
+        android:text="Name"
+        android:drawableLeft="@drawable/abc_btn_radio_to_on_mtrl_000"
+        android:drawablePadding="10dp"
         android:layout_below="@+id/imageView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="40dp"
-        android:id="@+id/linearLayout3">
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
 
-        <ImageView
-            android:layout_width="@dimen/abc_action_bar_progress_bar_size"
-            android:layout_height="40dp"
-            android:id="@+id/imageName"
-            android:src="@drawable/abc_btn_radio_to_on_mtrl_000"
-            android:layout_marginLeft="20dp" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/quantityItem"
+        android:layout_weight="1"
+        android:text="Quantity"
+        android:drawableLeft="@drawable/abc_btn_radio_to_on_mtrl_015"
+        android:drawablePadding="10dp"
+        android:layout_below="@+id/title"
+        android:layout_alignLeft="@+id/title"
+        android:layout_alignStart="@+id/title"
+        android:layout_alignRight="@+id/title"
+        android:layout_alignEnd="@+id/title"
+        android:layout_marginTop="20dp" />
 
-        <EditText
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/radioGroup"
+        android:layout_below="@+id/quantityItem"
+        android:layout_alignLeft="@+id/quantityItem"
+        android:layout_alignStart="@+id/quantityItem"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp">
+
+        <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/title"
-            android:layout_weight="1"
-            android:text="Name"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp" />
-    </LinearLayout>
+            android:text="Fridge"
+            android:drawableLeft="@drawable/abc_btn_check_to_on_mtrl_015"
+            android:drawablePadding="10dp"
+            android:id="@+id/radioButtonFridge"
+            android:checked="false"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/abc_btn_check_to_on_mtrl_015"
+            android:drawablePadding="10dp"
+            android:text="Freezer"
+            android:id="@+id/radioButtonFreezer"
+            android:checked="false"
+            android:layout_marginLeft="20dp" />
+    </RadioGroup>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:weightSum="1"
         android:id="@+id/linearLayout"
-        android:layout_below="@+id/linearLayout3"
+        android:layout_below="@+id/radioGroup"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="40dp">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:id="@+id/imageQuantity"
-            android:src="@drawable/abc_btn_radio_to_on_mtrl_015"
-            android:layout_marginLeft="20dp" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/quantityItem"
-            android:layout_weight="0.85"
-            android:text="Quantity"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_below="@+id/linearLayout"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="40dp"
-        android:id="@+id/linearLayout2"
-        android:weightSum="1">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:id="@+id/imageFridgeFreezer"
-            android:src="@drawable/abc_btn_check_to_on_mtrl_015"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="0" />
-
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:id="@+id/radioGroup"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="0.5">
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fridge"
-                android:id="@+id/radioButtonFridge"
-                android:checked="false" />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Freezer"
-                android:id="@+id/radioButtonFreezer"
-                android:checked="false"
-                android:layout_marginLeft="20dp" />
-        </RadioGroup>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_below="@+id/linearLayout2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="40dp"
-        android:weightSum="1">
+        android:layout_alignParentStart="true">
 
         <ImageView
             android:layout_width="40dp"
