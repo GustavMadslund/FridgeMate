@@ -6,8 +6,8 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,7 +24,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-public class AddItemActivity extends ActionBarActivity {
+public class AddItemActivity extends AppCompatActivity {
     // 7 days in milliseconds - 7 * 24 * 60 * 60 * 1000
     private static final int SEVEN_DAYS = 604800000;
 
@@ -41,6 +41,8 @@ public class AddItemActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_item);
+
+
 
         mTitleText = (EditText) findViewById(R.id.title);
         mQuantity = (EditText) findViewById(R.id.quantityItem);
