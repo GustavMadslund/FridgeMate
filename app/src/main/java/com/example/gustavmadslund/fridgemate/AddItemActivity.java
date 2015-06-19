@@ -1,6 +1,5 @@
 package com.example.gustavmadslund.fridgemate;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -172,7 +171,6 @@ public class AddItemActivity extends AppCompatActivity {
 
             dateView.setText(dateString);
         }
-
     }
 
     private void showDatePickerDialog() {

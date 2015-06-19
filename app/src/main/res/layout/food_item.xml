@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editItem"
+        android:src="@android:drawable/ic_menu_edit"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkBox"
+        android:checked="false"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Cheese"
+        android:id="@+id/title"
+        android:layout_alignTop="@+id/checkBox"
+        android:layout_toRightOf="@+id/checkBox"
+        android:layout_toEndOf="@+id/checkBox"
+        android:layout_marginTop="7dp" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_below="@+id/title"
+        android:layout_toLeftOf="@+id/editItem"
+        android:max="50"
+        android:indeterminate="false"
+        android:progress="20"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="7dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="7 days"
+        android:id="@+id/daysLeft"
+        android:layout_alignTop="@+id/checkBox"
+        android:layout_alignRight="@+id/progressBar"
+        android:layout_alignEnd="@+id/progressBar"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp" />
+</RelativeLayout>

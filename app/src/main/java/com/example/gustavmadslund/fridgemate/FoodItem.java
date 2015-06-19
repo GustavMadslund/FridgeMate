@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import android.content.Intent;
 
@@ -73,8 +74,8 @@ public class FoodItem {
         intent.putExtra(FoodItem.DATE, date);
     }
 
-
-
-
-
+    public long getDateDiff() {
+        long diffInMillies = mDate.getTime() - new Date().getTime();
+        return TimeUnit.DAYS.convert(diffInMillies,TimeUnit.MILLISECONDS);
+    }
 }

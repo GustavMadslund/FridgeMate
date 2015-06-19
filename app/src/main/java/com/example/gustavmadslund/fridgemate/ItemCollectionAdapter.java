@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.ListFragment;
 
-
 /**
  * Created by GustavMadslund on 19/06/15.
  */

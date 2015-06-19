@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -66,40 +67,39 @@ public class FoodItemAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // TODO - Get the current ToDoItem
+        final FoodItem foodItem = (FoodItem) getItem(position);
 
-
-
-        // TODO - Inflate the View for this ToDoItem
-        // from todo_item.xml
-
+        LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        RelativeLayout itemLayout = (RelativeLayout) layoutInflater.inflate(R.layout.food_item, null);
 
         // Fill in specific ToDoItem data
         // Remember that the data that goes in this View
         // corresponds to the user interface elements defined
         // in the layout file
 
-        // TODO - Display Title in TextView
+        final TextView titleView = (TextView) itemLayout.findViewById(R.id.title);
+        //titleView.setText(foodItem.getTitle());
 
 
+        final CheckBox selectedView = (CheckBox) itemLayout.findViewById(R.id.checkBox);
 
-        // TODO - Set up Status CheckBox
+        // Listener is called when user toggles the selected checkbox
 
+        selectedView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView,
+                                         boolean isChecked) {
 
-        // TODO - Must also set up an OnCheckedChangeListener,
-        // which is called when the user toggles the status checkbox
+            }
+        });
 
+        final TextView daysView = (TextView) itemLayout.findViewById(R.id.daysLeft);
+        daysView.setText(String.valueOf(foodItem.getDateDiff()) + "days left");
 
-
-        // TODO - Display Priority in a TextView
-
-
-        // TODO - Display Time and Date.
-        // Hint - use ToDoItem.FORMAT.format(toDoItem.getDate()) to get date and
-        // time String
-
+        final ProgressBar progressBar = (ProgressBar) itemLayout.findViewById(R.id.progressBar);
+        progressBar.setProgress(progressBar.getMax()- (int)(long) foodItem.getDateDiff());
 
         // Return the View you just created
-        return null;
+        return itemLayout;
     }
 }
