@@ -68,7 +68,7 @@
                 android:text="Fridge"
                 android:paddingLeft="10dp"
                 android:id="@+id/radioButtonFridge"
-                android:checked="false"/>
+                android:checked="true"/>
 
             <RadioButton
                 android:layout_width="wrap_content"

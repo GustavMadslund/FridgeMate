@@ -42,8 +42,6 @@ public class AddItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_item);
 
-
-
         mTitleText = (EditText) findViewById(R.id.title);
         mQuantity = (EditText) findViewById(R.id.quantityItem);
         mPlaceRadioGroup = (RadioGroup) findViewById(R.id.radioGroupPlace);
@@ -80,9 +78,6 @@ public class AddItemActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
-            case R.id.action_settings: {
-                return true;
-            }
             case R.id.action_add: {
                 submitItem();
                 return true;

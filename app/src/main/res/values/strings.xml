@@ -1,10 +1,8 @@
 <resources>
     <string name="app_name">FridgeMate</string>
-
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
     <string name="title_activity_add_item">AddItemActivity</string>
     <string name="action_add">Add item</string>
+    <string name="action_delete">Delete item</string>
     <string name="title_activity_edit_item">EditItemActivity</string>
 </resources>

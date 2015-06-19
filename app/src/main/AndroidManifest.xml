@@ -26,7 +26,11 @@
         </activity>
         <activity
             android:name=".EditItemActivity"
-            android:label="@string/title_activity_edit_item" >
+            android:label="@string/title_activity_edit_item"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gustavmadslund.fridgemate.MainActivity" />
         </activity>
     </application>
 
