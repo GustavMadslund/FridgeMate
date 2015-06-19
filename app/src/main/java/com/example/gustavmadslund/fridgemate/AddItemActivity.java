@@ -29,7 +29,6 @@ public class AddItemActivity extends ActionBarActivity {
     private static final int SEVEN_DAYS = 604800000;
 
     private static final String TAG = "Fridge-Log";
-
     private static String dateString;
     private static TextView dateView;
 
@@ -45,16 +44,14 @@ public class AddItemActivity extends ActionBarActivity {
 
         mTitleText = (EditText) findViewById(R.id.title);
         mQuantity = (EditText) findViewById(R.id.quantityItem);
-        mPlaceRadioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        mPlaceRadioGroup = (RadioGroup) findViewById(R.id.radioGroupPlace);
         dateView = (TextView) findViewById(R.id.textView);
 
         //Set hint text
         mTitleText.setHint("Name");
         mQuantity.setHint("Quantity");
 
-
         //Set the default date
-
         setDefaultDateTime();
 
         //OnClickListener for the Date Button, calls showDatePickerDialog()
