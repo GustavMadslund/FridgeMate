@@ -1,5 +1,6 @@
 package com.example.gustavmadslund.fridgemate;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -23,7 +24,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-public class AddItemActivity extends Activity {
+public class AddItemActivity extends ActionBarActivity {
     // 7 days in milliseconds - 7 * 24 * 60 * 60 * 1000
     private static final int SEVEN_DAYS = 604800000;
 
