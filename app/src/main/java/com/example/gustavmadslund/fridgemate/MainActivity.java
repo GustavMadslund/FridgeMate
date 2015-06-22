@@ -8,14 +8,11 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity implements ActionBar.TabListener {
 
-    FragmentAdapter mItemCollectionAdapter;
+    FragmentAdapter mfragmentAdapter;
     ViewPager mViewPager;
     private static final String FRIDGE = "Fridge";
     private static final String FREEZER = "Freezer";
@@ -29,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mItemCollectionAdapter = new FragmentAdapter(getSupportFragmentManager());
+        mfragmentAdapter = new FragmentAdapter(getSupportFragmentManager());
 
         final ActionBar actionBar = getSupportActionBar();
 
@@ -40,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setAdapter(mItemCollectionAdapter);
+        mViewPager.setAdapter(mfragmentAdapter);
 
         mViewPager.setOnPageChangeListener(new SimpleOnPageChangeListener() {
             @Override

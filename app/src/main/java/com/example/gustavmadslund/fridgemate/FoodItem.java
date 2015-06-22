@@ -21,6 +21,7 @@ public class FoodItem {
     public final static String QUANTITY = "quantity";
     public final static String PLACE = "place";
     public final static String DATE = "date";
+    private boolean checked = false;
 
     public final static SimpleDateFormat FORMAT = new SimpleDateFormat(
             "yyyy-MM-dd HH:mm:ss", Locale.US);
@@ -77,5 +78,13 @@ public class FoodItem {
     public long getDateDiff() {
         long diffInMillies = mDate.getTime() - new Date().getTime();
         return TimeUnit.DAYS.convert(diffInMillies,TimeUnit.MILLISECONDS);
+    }
+
+    public void setChecked(boolean checked){
+        this.checked = checked;
+     }
+
+    public boolean getChecked(){
+        return this.checked;
     }
 }
