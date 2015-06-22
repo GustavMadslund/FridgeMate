@@ -1,12 +1,5 @@
 package com.example.gustavmadslund.fridgemate;
 
-import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.ListFragment;
-import android.app.Notification;
-import android.os.Build;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 
 
@@ -15,20 +8,14 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
-import java.util.ArrayList;
+import android.widget.Button;
+import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity implements ActionBar.TabListener {
 
-    ItemCollectionAdapter mItemCollectionAdapter;
+    FragmentAdapter mItemCollectionAdapter;
     ViewPager mViewPager;
     private static final String FRIDGE = "Fridge";
     private static final String FREEZER = "Freezer";
@@ -42,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mItemCollectionAdapter = new ItemCollectionAdapter(getSupportFragmentManager());
+        mItemCollectionAdapter = new FragmentAdapter(getSupportFragmentManager());
 
         final ActionBar actionBar = getSupportActionBar();
 
@@ -66,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         actionBar.addTab(actionBar.newTab().setText(FRIDGE).setTabListener(this));
         actionBar.addTab(actionBar.newTab().setText(FREEZER).setTabListener(this));
         actionBar.addTab(actionBar.newTab().setText(GROCERY_LIST).setTabListener(this));
+
+
 
     }
 
