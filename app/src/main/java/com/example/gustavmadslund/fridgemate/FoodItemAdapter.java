@@ -1,5 +1,6 @@
 package com.example.gustavmadslund.fridgemate;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -13,6 +14,9 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +28,16 @@ public class FoodItemAdapter extends BaseAdapter {
 
     private final List<FoodItem> mItems = new ArrayList<FoodItem>();
     private final Context mContext;
+    private int checkedBoxes = 0;
+    private final View mView;
+
 
     private static final String TAG = "Fridge-Log";
 
-    public FoodItemAdapter(Context context) {
+    public FoodItemAdapter(Context context, View view) {
         mContext = context;
+        mView = view;
+
     }
 
     //Add a FoodItem to the adapter
@@ -69,10 +78,12 @@ public class FoodItemAdapter extends BaseAdapter {
     }
 
     @Override
+    public View getView(int position, View convertView, final ViewGroup parent) {
+        final FoodItem foodItem = (FoodItem) getItem(position);
     public View getView(int position, View convertView, ViewGroup parent) {
         final FoodItem mFoodItem = (FoodItem) getItem(position);
 
-        LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         RelativeLayout itemLayout = (RelativeLayout) layoutInflater.inflate(R.layout.food_item, null);
 
         // Fill in specific ToDoItem data
@@ -88,10 +99,29 @@ public class FoodItemAdapter extends BaseAdapter {
 
         // Listener is called when user toggles the selected checkbox
 
+        selectedView.setChecked(foodItem.getChecked());
+
         selectedView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView,
                                          boolean isChecked) {
+
+                if (isChecked){
+                    checkedBoxes++;
+
+                    foodItem.setChecked(true);
+
+                    TextView mTextView = (TextView) mView.findViewById(R.id.items_selected);
+                    mTextView.setText(checkedBoxes + " items selected");
+                }
+                else {
+                    checkedBoxes--;
+
+                    foodItem.setChecked(false);
+
+                    TextView mTextView = (TextView) mView.findViewById(R.id.items_selected);
+                    mTextView.setText(checkedBoxes + " items selected");
+                }
 
             }
         });
@@ -117,6 +147,4 @@ public class FoodItemAdapter extends BaseAdapter {
         // Return the View you just created
         return itemLayout;
     }
-
-
 }

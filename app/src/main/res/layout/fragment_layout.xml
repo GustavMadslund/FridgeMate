@@ -17,7 +17,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
-            android:text="0 items selected"
             android:id="@+id/items_selected"/>
 
         <Button android:id="@+id/add_button"
