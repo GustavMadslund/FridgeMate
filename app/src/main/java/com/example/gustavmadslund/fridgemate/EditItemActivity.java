@@ -1,7 +1,6 @@
 package com.example.gustavmadslund.fridgemate;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -21,6 +20,7 @@ public class EditItemActivity extends AppCompatActivity {
     private TextView mTitleText;
     private TextView mQuantity;
     private RadioGroup mPlaceRadioGroup;
+    private FoodItem mFoodItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +31,11 @@ public class EditItemActivity extends AppCompatActivity {
         mQuantity = (TextView) findViewById(R.id.quantityItem);
         mPlaceRadioGroup = (RadioGroup) findViewById(R.id.radioGroupPlace);
         dateView = (TextView) findViewById(R.id.textDate);
+        mFoodItem = new FoodItem("Milk", 2, Place.FRIDGE, new Date(new Date().getTime() + 604800000));
         
-        mTitleText.setText("DummyText");
-        mQuantity.setText("999");
-        dateView.setText("X days");
+        mTitleText.setText(getItemTitle());
+        mQuantity.setText(getQuantity().toString());
+        dateView.setText(getDate().toString() + " days");
 
     }
 
@@ -42,6 +43,7 @@ public class EditItemActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_edit_item, menu);
+
         return true;
     }
 
@@ -67,7 +69,7 @@ public class EditItemActivity extends AppCompatActivity {
 
     private void editItem() {
         // TODO - Finish edit item
-        Place place = getPlace();
+        Place place = setPlace();
         Intent data = new Intent();
         data.putExtra(FoodItem.PLACE,place);
 
@@ -83,7 +85,7 @@ public class EditItemActivity extends AppCompatActivity {
         finish();
     }
 
-    private Place getPlace() {
+    private Place setPlace() {
         switch (mPlaceRadioGroup.getCheckedRadioButtonId()) {
             case R.id.radioButtonFreezer:{
                 return FoodItem.Place.FREEZER;
@@ -93,6 +95,15 @@ public class EditItemActivity extends AppCompatActivity {
             }
         }
     }
+
+    private Integer getDate() {return (int) mFoodItem.getDateDiff();}
+
+    private Place getPlace() {return mFoodItem.getPlace();}
+
+    private Integer getQuantity() {return mFoodItem.getQuantity();}
+
+    private String getItemTitle() {return mFoodItem.getTitle();}
+
 
 
 }

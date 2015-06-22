@@ -66,6 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Fridge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:paddingLeft="10dp"
                 android:id="@+id/radioButtonFridge"
                 android:checked="true"/>
@@ -74,6 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Freezer"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:paddingLeft="10dp"
                 android:id="@+id/radioButtonFreezer"
                 android:checked="false"
