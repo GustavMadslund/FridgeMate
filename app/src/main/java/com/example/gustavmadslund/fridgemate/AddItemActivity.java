@@ -1,12 +1,15 @@
 package com.example.gustavmadslund.fridgemate;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,11 +22,13 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import com.example.gustavmadslund.fridgemate.FoodItem.Place;
 
+import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 
-public class AddItemActivity extends AppCompatActivity {
+public class AddItemActivity extends AppCompatActivity implements
+        DatePickerDialog.OnDateSetListener {
     // 7 days in milliseconds - 7 * 24 * 60 * 60 * 1000
     private static final int SEVEN_DAYS = 604800000;
 
@@ -35,6 +40,10 @@ public class AddItemActivity extends AppCompatActivity {
     private RadioGroup mPlaceRadioGroup;
     private EditText mTitleText;
     private EditText mQuantity;
+
+    private AlarmManager mAlarmManager;
+    private Intent mAlarmIntent;
+    private PendingIntent mAlarmPendingIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +71,22 @@ public class AddItemActivity extends AppCompatActivity {
                 showDatePickerDialog();
             }
         });
+
+        // Gets the AlarmManager to handle alarms
+        mAlarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+        // Intent to be broadcasted as a notification
+        mAlarmIntent = new Intent(AddItemActivity.this, AlarmNotification.class);
+
+        // Puts the user-defined item-name and place with the intent to show with notification later on
+        mAlarmIntent.putExtra("NAME_OF_ITEM",  getToDoTitle().toString());
+        mAlarmIntent.putExtra("PLACE_OF_ITEM",  getPlaceToString());
+
+        // PendingIntent that holds the above intent
+        mAlarmPendingIntent = PendingIntent.getBroadcast(AddItemActivity.this, 0, mAlarmIntent, 0);
+
+        Log.v("Notification","Intent created");
+
     }
 
     @Override
@@ -111,6 +136,9 @@ public class AddItemActivity extends AppCompatActivity {
                 c.get(Calendar.DAY_OF_MONTH));
 
         dateView.setText(dateString);
+
+
+       Log.v("Notification","Time set for String");
     }
 
     private static void setDateString(int year, int monthOfYear, int dayOfMonth) {
@@ -139,7 +167,18 @@ public class AddItemActivity extends AppCompatActivity {
         }
     }
 
-    private String getToDoTitle() {
+    private String getPlaceToString(){
+        switch (mPlaceRadioGroup.getCheckedRadioButtonId()) {
+            case R.id.radioButtonFreezer: {
+                return "freezer";
+            }
+            default: {
+                return "fridge";
+            }
+        }
+    }
+
+    public String getToDoTitle() {
         return mTitleText.getText().toString();
     }
 
@@ -147,8 +186,34 @@ public class AddItemActivity extends AppCompatActivity {
         return Integer.parseInt(mQuantity.getText().toString());
     }
 
-    public static class DatePickerFragment extends DialogFragment implements
-            DatePickerDialog.OnDateSetListener {
+    @Override
+    public void onDateSet(DatePicker view, int year, int monthOfYear,
+                          int dayOfMonth) {
+        setDateString(year, monthOfYear, dayOfMonth);
+
+        dateView.setText(dateString);
+
+        Log.v("Notification", "Data set");
+        // Passes the entered date-options to method for alarm-creation
+        setAlarm(year, monthOfYear, dayOfMonth);
+
+    }
+
+    public void setAlarm(int year, int monthOfYear, int dayOfMonth){
+        // Creates Calendar-object to convert date-format to time in milliseconds
+        Calendar mAlarmDate = Calendar.getInstance();
+        mAlarmDate.setTimeInMillis(System.currentTimeMillis());
+        mAlarmDate.set(year, monthOfYear, dayOfMonth, 12, 00, 0);
+
+        // Sets the alarm
+        mAlarmManager.set(AlarmManager.RTC_WAKEUP, mAlarmDate.getTimeInMillis(), mAlarmPendingIntent);
+        //mAlarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 3*1000L, mAlarmPendingIntent);
+        Log.v("Notification","Alarm set successfully");
+
+    }
+
+//////////////////////////////////NEW CLASS//////////////////////////////////////////////
+    public static class DatePickerFragment extends DialogFragment  {
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -161,20 +226,17 @@ public class AddItemActivity extends AppCompatActivity {
             int day = c.get(Calendar.DAY_OF_MONTH);
 
             // Create a new instance of DatePickerDialog and return it
-            return new DatePickerDialog(getActivity(), this, year, month, day);
+            return new DatePickerDialog(getActivity(), (AddItemActivity)getActivity(), year, month, day);
         }
 
-        @Override
-        public void onDateSet(DatePicker view, int year, int monthOfYear,
-                              int dayOfMonth) {
-            setDateString(year, monthOfYear, dayOfMonth);
-
-            dateView.setText(dateString);
-        }
     }
 
     private void showDatePickerDialog() {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getFragmentManager(), "datePicker");
+
+
     }
+
+
 }

@@ -4,7 +4,7 @@
 
     <uses-sdk
         android:minSdkVersion="14"
-        android:targetSdkVersion="14" />
+        android:targetSdkVersion="22" />
 
     <application
         android:allowBackup="true"
@@ -36,6 +36,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.gustavmadslund.fridgemate.MainActivity" />
         </activity>
+
+        <receiver android:name=".AlarmNotification" >
+        </receiver>
+
     </application>
 
 </manifest>
