@@ -1,22 +1,17 @@
 package com.example.gustavmadslund.fridgemate;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,8 +75,6 @@ public class FoodItemAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, final ViewGroup parent) {
         final FoodItem foodItem = (FoodItem) getItem(position);
-    public View getView(int position, View convertView, ViewGroup parent) {
-        final FoodItem mFoodItem = (FoodItem) getItem(position);
 
         final LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         RelativeLayout itemLayout = (RelativeLayout) layoutInflater.inflate(R.layout.food_item, null);
@@ -92,7 +85,7 @@ public class FoodItemAdapter extends BaseAdapter {
         // in the layout file
 
         final TextView titleView = (TextView) itemLayout.findViewById(R.id.title);
-        titleView.setText(mFoodItem.getTitle());
+        titleView.setText(foodItem.getTitle());
 
 
         final CheckBox selectedView = (CheckBox) itemLayout.findViewById(R.id.checkBox);
@@ -106,15 +99,14 @@ public class FoodItemAdapter extends BaseAdapter {
             public void onCheckedChanged(CompoundButton buttonView,
                                          boolean isChecked) {
 
-                if (isChecked){
+                if (isChecked) {
                     checkedBoxes++;
 
                     foodItem.setChecked(true);
 
                     TextView mTextView = (TextView) mView.findViewById(R.id.items_selected);
                     mTextView.setText(checkedBoxes + " items selected");
-                }
-                else {
+                } else {
                     checkedBoxes--;
 
                     foodItem.setChecked(false);
@@ -139,10 +131,10 @@ public class FoodItemAdapter extends BaseAdapter {
         });
 
         final TextView daysView = (TextView) itemLayout.findViewById(R.id.daysLeft);
-        daysView.setText(String.valueOf((int) mFoodItem.getDateDiff()) + "days left");
+        daysView.setText(String.valueOf((int) foodItem.getDateDiff()) + "days left");
 
         final ProgressBar progressBar = (ProgressBar) itemLayout.findViewById(R.id.progressBar);
-        progressBar.setProgress(progressBar.getMax() - (int) mFoodItem.getDateDiff());
+        progressBar.setProgress(progressBar.getMax() - (int) foodItem.getDateDiff());
 
         // Return the View you just created
         return itemLayout;

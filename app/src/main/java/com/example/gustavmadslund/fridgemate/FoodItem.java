@@ -1,14 +1,10 @@
 package com.example.gustavmadslund.fridgemate;
 
-import java.io.Serializable;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
 import android.content.Intent;
-import android.util.Log;
 
 /**
  * Created by Mikkel on 18-06-2015.
@@ -25,7 +21,7 @@ public class FoodItem {
     public final static String QUANTITY = "quantity";
     public final static String PLACE = "place";
     public final static String DATE = "date";
-    private boolean checked = false;
+    private boolean CHECKED = false;
 
     public final static SimpleDateFormat FORMAT = new SimpleDateFormat(
             "yyyy-MM-dd HH:mm:ss", Locale.US);
@@ -76,11 +72,11 @@ public class FoodItem {
         return mDateDiff;
     }
 
-    public void setChecked(boolean checked){
-        this.checked = checked;
+    public void setChecked(boolean Checked){
+        this.CHECKED = CHECKED;
      }
 
     public boolean getChecked(){
-        return this.checked;
+        return this.CHECKED;
     }
 }
