@@ -117,4 +117,6 @@ public class FoodItemAdapter extends BaseAdapter {
         // Return the View you just created
         return itemLayout;
     }
+
+
 }

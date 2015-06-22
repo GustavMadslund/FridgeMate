@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.File;
+
 
 public class MainActivity extends AppCompatActivity implements ActionBar.TabListener {
 
@@ -74,6 +76,17 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     public void onTabReselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction ft) {
 
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        File file = new File("data.txt");
+        String filePath = file.getAbsolutePath();
+
+        //Todo: get FoodItemAdapter
+        //ItemReadWrite.write(filePath, getFoodItemAdapter);
+    }
+
 }
 
 
