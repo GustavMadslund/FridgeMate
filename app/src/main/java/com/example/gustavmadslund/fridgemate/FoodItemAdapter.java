@@ -1,12 +1,15 @@
 package com.example.gustavmadslund.fridgemate;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -67,7 +70,7 @@ public class FoodItemAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        final FoodItem foodItem = (FoodItem) getItem(position);
+        final FoodItem mFoodItem = (FoodItem) getItem(position);
 
         LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         RelativeLayout itemLayout = (RelativeLayout) layoutInflater.inflate(R.layout.food_item, null);
@@ -78,7 +81,7 @@ public class FoodItemAdapter extends BaseAdapter {
         // in the layout file
 
         final TextView titleView = (TextView) itemLayout.findViewById(R.id.title);
-        //titleView.setText(foodItem.getTitle());
+        titleView.setText(mFoodItem.getTitle());
 
 
         final CheckBox selectedView = (CheckBox) itemLayout.findViewById(R.id.checkBox);
@@ -92,12 +95,24 @@ public class FoodItemAdapter extends BaseAdapter {
 
             }
         });
+        ImageButton editButton = (ImageButton) itemLayout.findViewById(R.id.editItem);
+
+        // Listener is called when user clicks the ImageButton
+
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, EditItemActivity.class);
+                mContext.startActivity(intent);
+
+            }
+        });
 
         final TextView daysView = (TextView) itemLayout.findViewById(R.id.daysLeft);
-        daysView.setText(String.valueOf(foodItem.getDateDiff()) + "days left");
+        daysView.setText(String.valueOf((int) mFoodItem.getDateDiff()) + "days left");
 
         final ProgressBar progressBar = (ProgressBar) itemLayout.findViewById(R.id.progressBar);
-        progressBar.setProgress(progressBar.getMax()- (int)(long) foodItem.getDateDiff());
+        progressBar.setProgress(progressBar.getMax() - (int) (long) mFoodItem.getDateDiff());
 
         // Return the View you just created
         return itemLayout;
