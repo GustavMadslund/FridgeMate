@@ -7,6 +7,7 @@ import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +22,7 @@ import com.example.gustavmadslund.fridgemate.FoodItem.Place;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 
 public class AddItemActivity extends AppCompatActivity {
@@ -92,8 +94,9 @@ public class AddItemActivity extends AppCompatActivity {
         String titleString = getToDoTitle();
         Integer quantity = getQuantity();
         Place place = getPlace();
+        Integer dateDifference = getDateDiff(mDate);
         Intent data = new Intent();
-        FoodItem.packageIntent(data, titleString, quantity, place, dateString);
+        FoodItem.packageIntent(data, titleString, quantity, place, dateDifference);
 
         setResult(RESULT_OK, data);
         finish();
@@ -148,7 +151,8 @@ public class AddItemActivity extends AppCompatActivity {
         return Integer.parseInt(mQuantity.getText().toString());
     }
 
-    public static class DatePickerFragment extends DialogFragment implements
+
+    public class DatePickerFragment extends DialogFragment implements
             DatePickerDialog.OnDateSetListener {
 
         @Override
@@ -171,6 +175,15 @@ public class AddItemActivity extends AppCompatActivity {
             setDateString(year, monthOfYear, dayOfMonth);
 
             dateView.setText(dateString);
+            Calendar cal = Calendar.getInstance();
+            cal.set(Calendar.YEAR, year);
+            cal.set(Calendar.MONTH, monthOfYear);
+            cal.set(Calendar.DATE, dayOfMonth);
+            cal.set(Calendar.HOUR_OF_DAY, 0);
+            cal.set(Calendar.MINUTE, 0);
+            cal.set(Calendar.SECOND, 0);
+            cal.set(Calendar.MILLISECOND, 0);
+            mDate = cal.getTime();
         }
     }
 
@@ -178,4 +191,11 @@ public class AddItemActivity extends AppCompatActivity {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getFragmentManager(), "datePicker");
     }
+    public int getDateDiff(Date futureDate) {
+        Log.i(TAG,futureDate.toString());
+        Log.i(TAG,new Date().toString());
+        long diffInMillies = futureDate.getTime() - new Date().getTime();
+        return (int) TimeUnit.DAYS.convert(diffInMillies,TimeUnit.MILLISECONDS);
+    }
+
 }
