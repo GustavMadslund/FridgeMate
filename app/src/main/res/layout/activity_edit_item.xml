@@ -68,7 +68,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:paddingLeft="10dp"
                 android:id="@+id/radioButtonFridge"
-                android:CHECKED="true"/>
+                android:checked="true"/>
 
             <RadioButton
                 android:layout_width="wrap_content"
@@ -77,7 +77,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:paddingLeft="10dp"
                 android:id="@+id/radioButtonFreezer"
-                android:CHECKED="false"
+                android:checked="false"
                 android:layout_marginLeft="20dp" />
         </RadioGroup>
 
