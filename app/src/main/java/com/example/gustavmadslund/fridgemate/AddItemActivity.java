@@ -20,6 +20,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.gustavmadslund.fridgemate.FoodItem.Place;
 
 import java.text.DateFormat;
@@ -105,8 +107,12 @@ public class AddItemActivity extends AppCompatActivity implements
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
             case R.id.action_add: {
-                submitItem();
-                return true;
+                if(getToDoTitle().isEmpty())
+                    Toast.makeText(getApplicationContext(),"Name is empty",Toast.LENGTH_SHORT).show();
+                else{
+                    submitItem();
+                    return true;
+                }
             }
             default: {
                 return super.onOptionsItemSelected(item);
