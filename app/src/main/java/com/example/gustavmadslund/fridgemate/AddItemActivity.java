@@ -58,6 +58,7 @@ public class AddItemActivity extends AppCompatActivity implements
         //Set hint text
         mTitleText.setHint("Name");
         mQuantity.setHint("Quantity");
+        mQuantity.setText("1");
 
         //Set the default date
         setDefaultDateTime();
