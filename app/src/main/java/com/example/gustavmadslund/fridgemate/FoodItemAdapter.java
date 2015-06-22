@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
@@ -23,16 +24,11 @@ public class FoodItemAdapter extends BaseAdapter {
 
     private final List<FoodItem> mItems = new ArrayList<FoodItem>();
     private final Context mContext;
-    private int checkedBoxes = 0;
-    private final View mView;
-
 
     private static final String TAG = "Fridge-Log";
 
-    public FoodItemAdapter(Context context, View view) {
+    public FoodItemAdapter(Context context) {
         mContext = context;
-        mView = view;
-
     }
 
     //Add a FoodItem to the adapter
@@ -73,10 +69,10 @@ public class FoodItemAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, final ViewGroup parent) {
-        final FoodItem foodItem = (FoodItem) getItem(position);
+    public View getView(int position, View convertView, ViewGroup parent) {
+        final FoodItem mFoodItem = (FoodItem) getItem(position);
 
-        final LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         RelativeLayout itemLayout = (RelativeLayout) layoutInflater.inflate(R.layout.food_item, null);
 
         // Fill in specific ToDoItem data
@@ -85,35 +81,17 @@ public class FoodItemAdapter extends BaseAdapter {
         // in the layout file
 
         final TextView titleView = (TextView) itemLayout.findViewById(R.id.title);
-        titleView.setText(foodItem.getTitle());
+        titleView.setText(mFoodItem.getTitle());
 
 
         final CheckBox selectedView = (CheckBox) itemLayout.findViewById(R.id.checkBox);
 
         // Listener is called when user toggles the selected checkbox
 
-        selectedView.setChecked(foodItem.getChecked());
-
         selectedView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView,
                                          boolean isChecked) {
-
-                if (isChecked) {
-                    checkedBoxes++;
-
-                    foodItem.setChecked(true);
-
-                    TextView mTextView = (TextView) mView.findViewById(R.id.items_selected);
-                    mTextView.setText(checkedBoxes + " items selected");
-                } else {
-                    checkedBoxes--;
-
-                    foodItem.setChecked(false);
-
-                    TextView mTextView = (TextView) mView.findViewById(R.id.items_selected);
-                    mTextView.setText(checkedBoxes + " items selected");
-                }
 
             }
         });
@@ -131,12 +109,16 @@ public class FoodItemAdapter extends BaseAdapter {
         });
 
         final TextView daysView = (TextView) itemLayout.findViewById(R.id.daysLeft);
-        daysView.setText(String.valueOf((int) foodItem.getDateDiff()) + "days left");
+        daysView.setText(String.valueOf((int) mFoodItem.getDateDiff()) + "days left");
 
         final ProgressBar progressBar = (ProgressBar) itemLayout.findViewById(R.id.progressBar);
-        progressBar.setProgress(progressBar.getMax() - (int) foodItem.getDateDiff());
+        progressBar.setProgress(progressBar.getMax() - (int) mFoodItem.getDateDiff());
 
         // Return the View you just created
         return itemLayout;
     }
+
+    public ArrayList<FoodItem> getItemList() {return mItems;}
+
+
 }

@@ -1,5 +1,6 @@
 package com.example.gustavmadslund.fridgemate;
 
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 
 
@@ -10,6 +11,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
 import java.io.File;
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity implements ActionBar.TabListener {
@@ -74,15 +76,24 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
 
     }
 
-    @Override
-    protected void onStop() {
+    /*@Override
+    protected void onStop(){
         super.onStop();
-        File file = new File("data.txt");
-        String filePath = file.getAbsolutePath();
 
-        //Todo: get FoodItemAdapter
-        //ItemReadWrite.write(filePath, getFoodItemAdapter);
-    }
+        ItemReadWrite readWrite = new ItemReadWrite();
+
+        //Get itemList in FridgeFragment
+
+        FridgeFragment fridgeFragment = (FridgeFragment) mItemCollectionAdapter.getItem(0);
+        if(fridgeFragment.mAdapter.getItemList() != null){
+            ArrayList<FoodItem> fridgeData = fridgeFragment.mAdapter.getItemList();
+            File file = new File("fridgeData.ser");
+            String filePath = file.getAbsolutePath();
+            readWrite.write(filePath, fridgeData);
+        } else {
+            return;
+        }
+    }*/
 
 }
 

@@ -18,9 +18,9 @@ import java.util.ArrayList;
  */
 public class ItemReadWrite {
 
-    public static ArrayList<FoodItem> read(Context context, String filepath) throws IOException, ClassNotFoundException {
+    public static ArrayList<FoodItem> read(Context context, String filePath) throws IOException, ClassNotFoundException {
 
-        FileInputStream inputStream = new FileInputStream(filepath);
+        FileInputStream inputStream = new FileInputStream(filePath);
 
         ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
         try {
