@@ -27,7 +27,7 @@ public class AddItemActivity extends AppCompatActivity {
     // 7 days in milliseconds - 7 * 24 * 60 * 60 * 1000
     private static final int SEVEN_DAYS = 604800000;
 
-    private static final String TAG = "Fridge-Log";
+    private static final String TAG = "FridgeFragment-Log";
     private static String dateString;
     private static TextView dateView;
 

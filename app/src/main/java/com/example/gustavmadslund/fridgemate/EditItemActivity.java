@@ -14,7 +14,7 @@ import java.util.Date;
 
 public class EditItemActivity extends AppCompatActivity {
 
-    private static final String TAG = "Fridge-Log";
+    private static final String TAG = "FridgeFragment-Log";
 
     private TextView dateView;
     private TextView mTitleText;
