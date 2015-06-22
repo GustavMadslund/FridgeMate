@@ -25,6 +25,7 @@ import com.example.gustavmadslund.fridgemate.FoodItem.Place;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 
 public class AddItemActivity extends AppCompatActivity implements
@@ -117,8 +118,9 @@ public class AddItemActivity extends AppCompatActivity implements
         String titleString = getToDoTitle();
         Integer quantity = getQuantity();
         Place place = getPlace();
+        Integer dateDifference = getDateDiff(mDate);
         Intent data = new Intent();
-        FoodItem.packageIntent(data, titleString, quantity, place, dateString);
+        FoodItem.packageIntent(data, titleString, quantity, place, dateDifference);
 
         setResult(RESULT_OK, data);
         finish();
@@ -139,7 +141,7 @@ public class AddItemActivity extends AppCompatActivity implements
         dateView.setText(dateString);
 
 
-       Log.v("Notification","Time set for String");
+       Log.v("Notification", "Time set for String");
     }
 
     private static void setDateString(int year, int monthOfYear, int dayOfMonth) {
@@ -194,6 +196,16 @@ public class AddItemActivity extends AppCompatActivity implements
 
         dateView.setText(dateString);
 
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, year);
+        cal.set(Calendar.MONTH, monthOfYear);
+        cal.set(Calendar.DATE, dayOfMonth);
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        mDate = cal.getTime();
+
         Log.v("Notification", "Data set");
         // Passes the entered date-options to method for alarm-creation
         setAlarm(year, monthOfYear, dayOfMonth);
@@ -214,30 +226,33 @@ public class AddItemActivity extends AppCompatActivity implements
     }
 
 //////////////////////////////////NEW CLASS//////////////////////////////////////////////
-    public static class DatePickerFragment extends DialogFragment  {
+    public static class DatePickerFragment extends DialogFragment {
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-
+    
             // Use the current date as the default date in the picker
-
+    
             final Calendar c = Calendar.getInstance();
             int year = c.get(Calendar.YEAR);
             int month = c.get(Calendar.MONTH);
             int day = c.get(Calendar.DAY_OF_MONTH);
-
+    
             // Create a new instance of DatePickerDialog and return it
-            return new DatePickerDialog(getActivity(), (AddItemActivity)getActivity(), year, month, day);
+            return new DatePickerDialog(getActivity(), (AddItemActivity) getActivity(), year, month, day);
         }
-
     }
 
     private void showDatePickerDialog() {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getFragmentManager(), "datePicker");
-
-
     }
 
-
+    public int getDateDiff(Date futureDate) {
+        Log.i(TAG, futureDate.toString());
+        Log.i(TAG, new Date().toString());
+        long diffInMillies = futureDate.getTime() - new Date().getTime();
+        return (int) TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+    }
 }
+    

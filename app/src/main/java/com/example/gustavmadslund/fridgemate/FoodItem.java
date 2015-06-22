@@ -7,11 +7,14 @@ import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import android.content.Intent;
+import android.util.Log;
 
 /**
  * Created by Mikkel on 18-06-2015.
  */
 public class FoodItem {
+
+    private static final String TAG = "Fridge-Log";
 
     public enum Place {
         FRIDGE, FREEZER
@@ -29,6 +32,7 @@ public class FoodItem {
     private Integer mQuantity = 1;
     private Place mPlace = Place.FRIDGE;
     private Date mDate = new Date();
+    private Integer mDateDiff = 0;
 
     FoodItem(String title, Integer quantity, Place place, Date date){
         this.mTitle = title;
@@ -41,13 +45,7 @@ public class FoodItem {
         mTitle = intent.getStringExtra(FoodItem.TITLE);
         mQuantity = intent.getIntExtra(FoodItem.QUANTITY, 1);
         mPlace = Place.valueOf(intent.getStringExtra(FoodItem.PLACE));
-
-        try {
-            mDate = FoodItem.FORMAT.parse(intent.getStringExtra(FoodItem.DATE));
-        } catch (ParseException e) {
-            mDate = new Date();
-        }
-
+        mDateDiff = intent.getIntExtra(FoodItem.DATE,1);
     }
 
     public String getTitle() {return mTitle;}
@@ -58,24 +56,21 @@ public class FoodItem {
 
     public void setPlace(Place mPlace) {this.mPlace = mPlace;}
 
-    public Date getDate() {return mDate;}
-
     public void setDate(Date mDate) {this.mDate = mDate;}
 
     //Take a set of String data values and
     // package them for transport in an Intent
 
     public static void packageIntent(Intent intent, String title,
-           Integer quantity, Place place, String date) {
+           Integer quantity, Place place, Integer date) {
 
         intent.putExtra(FoodItem.TITLE, title);
-        intent.putExtra(FoodItem.QUANTITY, quantity.toString());
+        intent.putExtra(FoodItem.QUANTITY, quantity);
         intent.putExtra(FoodItem.PLACE, place.toString());
         intent.putExtra(FoodItem.DATE, date);
     }
 
-    public long getDateDiff() {
-        long diffInMillies = mDate.getTime() - new Date().getTime();
-        return TimeUnit.DAYS.convert(diffInMillies,TimeUnit.MILLISECONDS);
+    public int getDateDiff() {
+        return mDateDiff;
     }
 }
