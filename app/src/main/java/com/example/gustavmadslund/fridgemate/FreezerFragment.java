@@ -30,7 +30,7 @@ public class FreezerFragment extends ListFragment{
 
         View freezerView = inflater.inflate(R.layout.fragment_layout, container, false);
 
-        mAdapter = new FoodItemAdapter(getActivity(), freezerView);
+        mAdapter = new FoodItemAdapter(getActivity(), freezerView, "Freezer");
 
         this.setListAdapter(mAdapter);
 

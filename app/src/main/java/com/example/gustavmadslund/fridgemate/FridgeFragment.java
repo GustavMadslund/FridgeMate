@@ -42,7 +42,7 @@ public class FridgeFragment extends ListFragment {
         View fridgeView = inflater.inflate(R.layout.fragment_layout, container, false);
         super.onCreate(savedInstanceState);
 
-        mAdapter = new FoodItemAdapter(getActivity(), fridgeView);
+        mAdapter = new FoodItemAdapter(getActivity(), fridgeView, "Fridge");
         this.setListAdapter(mAdapter);
         
         Button addButton = (Button) fridgeView.findViewById(R.id.add_button);

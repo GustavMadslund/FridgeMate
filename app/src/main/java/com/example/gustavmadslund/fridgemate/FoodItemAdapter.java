@@ -34,19 +34,21 @@ public class FoodItemAdapter extends BaseAdapter{
     private int checkedBoxes = 0;
     private final View mView;
     private final List<FoodItem> mCheckedItems = new ArrayList<FoodItem>();
+    private final String mPlace;
 
     private static final String TAG = "Fridge-Log";
     private SharedPreferences sharedPreferences;
     private Gson gson;
     Type type = new TypeToken<List<FoodItem>>(){}.getType();
 
-    public FoodItemAdapter(Context context, View view) {
+    public FoodItemAdapter(Context context, View view, String place) {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         gson = new Gson();
         mContext = context;
         mView = view;
+        this.mPlace = place;
 
-        String mString = sharedPreferences.getString("Fridge","[]");
+        String mString = sharedPreferences.getString(mPlace,"[]");
         mItems = gson.fromJson(mString,type);
     }
 
@@ -58,7 +60,7 @@ public class FoodItemAdapter extends BaseAdapter{
         mItems.add(item);
         notifyDataSetChanged();
 
-        sharedPreferences.edit().putString("Fridge",gson.toJson(mItems, type)).commit();
+        sharedPreferences.edit().putString(mPlace,gson.toJson(mItems, type)).commit();
     }
 
     //Clears the list adapter of all items.
