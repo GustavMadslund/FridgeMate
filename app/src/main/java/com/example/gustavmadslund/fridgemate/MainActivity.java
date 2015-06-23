@@ -23,10 +23,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     private static final String FRIDGE = "Fridge";
     private static final String FREEZER = "Freezer";
     private static final String GROCERY_LIST = "Grocery List";
-    private String filePath;
-    private ItemReadWrite mReadWrite = new ItemReadWrite();
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
