@@ -9,7 +9,7 @@ import android.content.Intent;
 /**
  * Created by Mikkel on 18-06-2015.
  */
-public class FoodItem implements java.io.Serializable {
+public class FoodItem {
 
     private static final String TAG = "Fridge-Log";
 

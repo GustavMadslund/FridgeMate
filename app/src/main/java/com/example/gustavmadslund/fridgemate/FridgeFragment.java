@@ -41,12 +41,6 @@ public class FridgeFragment extends ListFragment {
         super.onCreate(savedInstanceState);
 
         mAdapter = new FoodItemAdapter(getActivity(), fridgeView);
-
-        if (savedInstanceState != null) {
-            mAdapter.setmItems((List<FoodItem>) savedInstanceState.getSerializable("myKey"));
-        }
-
-
         this.setListAdapter(mAdapter);
         
         Button addButton = (Button) fridgeView.findViewById(R.id.add_button);
@@ -69,14 +63,6 @@ public class FridgeFragment extends ListFragment {
 
         return fridgeView;
 
-    }
-
-    public void onSaveInstanceState(Bundle savedState) {
-
-        super.onSaveInstanceState(savedState);
-
-        // Note: getValues() is a method in your ArrayAdaptor subclass
-        savedState.putSerializable("myKey", (Serializable) mAdapter.getmItems());
     }
 
     public FoodItemAdapter getFoodItemAdapter() {return mAdapter;}

@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * Created by Mikkel on 19-06-2015.
  */
-public class FoodItemAdapter extends BaseAdapter implements java.io.Serializable{
+public class FoodItemAdapter extends BaseAdapter{
 
     private List<FoodItem> mItems = new ArrayList<FoodItem>();
     private final Context mContext;
