@@ -263,6 +263,8 @@ public class AddItemActivity extends AppCompatActivity implements
         }
     }
 
+//////////////////////////////// END NEW CLASS///////////////////////////////////////////
+
     private void showDatePickerDialog() {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getFragmentManager(), "datePicker");

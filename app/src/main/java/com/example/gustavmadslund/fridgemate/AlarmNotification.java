@@ -28,7 +28,7 @@ public class AlarmNotification extends BroadcastReceiver {
         Log.v("Notification", "Notification-request received");
 
         // Intent to redirect user from shown Notification to see the added item
-        mNotificationIntent = new Intent(context, AddItemActivity.class);
+        mNotificationIntent = new Intent(context, MainActivity.class);
 
         // Creates Pending-intent with above intent
         mNotificationPendingIntent = PendingIntent.getActivity(context, 0, mNotificationIntent, Intent.FLAG_ACTIVITY_NEW_TASK);
