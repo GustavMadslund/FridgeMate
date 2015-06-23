@@ -33,19 +33,22 @@ public class FoodItemAdapter extends BaseAdapter{
     private final Context mContext;
     private int checkedBoxes = 0;
     private final View mView;
+    private final List<FoodItem> mCheckedItems = new ArrayList<FoodItem>();
+    private final String mPlace;
 
     private static final String TAG = "Fridge-Log";
     private SharedPreferences sharedPreferences;
     private Gson gson;
     Type type = new TypeToken<List<FoodItem>>(){}.getType();
 
-    public FoodItemAdapter(Context context, View view) {
+    public FoodItemAdapter(Context context, View view, String place) {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         gson = new Gson();
         mContext = context;
         mView = view;
+        this.mPlace = place;
 
-        String mString = sharedPreferences.getString("Fridge","[]");
+        String mString = sharedPreferences.getString(mPlace,"[]");
         mItems = gson.fromJson(mString,type);
     }
 
@@ -57,7 +60,7 @@ public class FoodItemAdapter extends BaseAdapter{
         mItems.add(item);
         notifyDataSetChanged();
 
-        sharedPreferences.edit().putString("Fridge",gson.toJson(mItems, type)).commit();
+        sharedPreferences.edit().putString(mPlace,gson.toJson(mItems, type)).commit();
     }
 
     //Clears the list adapter of all items.
@@ -108,6 +111,7 @@ public class FoodItemAdapter extends BaseAdapter{
 
         selectedView.setChecked(mFoodItem.getChecked());
 
+
         // Listener is called when user toggles the selected checkbox
 
         selectedView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -118,12 +122,16 @@ public class FoodItemAdapter extends BaseAdapter{
                 if (isChecked) {
                     checkedBoxes++;
 
+                    mCheckedItems.add(mFoodItem);
+
                     mFoodItem.setChecked(true);
 
                     TextView mTextView = (TextView) mView.findViewById(R.id.items_selected);
                     mTextView.setText(checkedBoxes + " items selected");
                     } else {
                     checkedBoxes--;
+
+                    mCheckedItems.remove(mFoodItem);
 
                     mFoodItem.setChecked(false);
 
@@ -141,6 +149,10 @@ public class FoodItemAdapter extends BaseAdapter{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, EditItemActivity.class);
+                intent.putExtra(FoodItem.QUANTITY, mFoodItem.getQuantity());
+                intent.putExtra(FoodItem.PLACE, mFoodItem.getPlace());
+                intent.putExtra(FoodItem.TITLE, mFoodItem.getTitle());
+                intent.putExtra(FoodItem.DATE, mFoodItem.getDateDiff());
                 mContext.startActivity(intent);
 
             }
@@ -166,6 +178,16 @@ public class FoodItemAdapter extends BaseAdapter{
     }
 
     public ArrayList<FoodItem> getItemList() {return (ArrayList<FoodItem>) mItems;}
+
+    public ArrayList<FoodItem> getCheckedItemList(){return (ArrayList<FoodItem>) mCheckedItems;}
+
+    public int getCheckedBoxes(){return checkedBoxes;}
+
+    public void setCheckedBoxes(int checkedBoxes){
+        this.checkedBoxes = checkedBoxes;
+    }
+
+    public View getView(){return mView;}
 
 
 }

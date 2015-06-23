@@ -1,6 +1,5 @@
 package com.example.gustavmadslund.fridgemate;
 
-import android.content.Intent;
 import android.support.v4.view.ViewPager;
 
 
@@ -11,17 +10,19 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity implements ActionBar.TabListener {
 
-    FragmentAdapter mfragmentAdapter;
+    FragmentAdapter mFragmentAdapter;
     ViewPager mViewPager;
     private static final String FRIDGE = "Fridge";
     private static final String FREEZER = "Freezer";
     private static final String GROCERY_LIST = "Grocery List";
-
+    private String filePath;
+    private ItemReadWrite mReadWrite = new ItemReadWrite();
 
 
 
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mfragmentAdapter = new FragmentAdapter(getSupportFragmentManager());
+        mFragmentAdapter = new FragmentAdapter(getSupportFragmentManager());
 
         final ActionBar actionBar = getSupportActionBar();
 
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setAdapter(mfragmentAdapter);
+        mViewPager.setAdapter(mFragmentAdapter);
 
         mViewPager.setOnPageChangeListener(new SimpleOnPageChangeListener() {
             @Override
@@ -75,26 +76,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     public void onTabReselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction ft) {
 
     }
-
-    /*@Override
-    protected void onStop(){
-        super.onStop();
-
-        ItemReadWrite readWrite = new ItemReadWrite();
-
-        //Get itemList in FridgeFragment
-
-        FridgeFragment fridgeFragment = (FridgeFragment) mItemCollectionAdapter.getItem(0);
-        if(fridgeFragment.mAdapter.getItemList() != null){
-            ArrayList<FoodItem> fridgeData = fridgeFragment.mAdapter.getItemList();
-            File file = new File("fridgeData.ser");
-            String filePath = file.getAbsolutePath();
-            readWrite.write(filePath, fridgeData);
-        } else {
-            return;
-        }
-    }*/
-
 }
 
 

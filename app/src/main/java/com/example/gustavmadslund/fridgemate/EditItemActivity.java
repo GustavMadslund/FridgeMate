@@ -31,11 +31,15 @@ public class EditItemActivity extends AppCompatActivity {
         mQuantity = (TextView) findViewById(R.id.quantityItem);
         mPlaceRadioGroup = (RadioGroup) findViewById(R.id.radioGroupPlace);
         dateView = (TextView) findViewById(R.id.textDate);
-        mFoodItem = new FoodItem("Milk", 2, Place.FRIDGE, new Date(new Date().getTime() + 604800000));
-        
+        Intent intent = getIntent();
+        mFoodItem = new FoodItem(intent);
+
+
+
         mTitleText.setText(getItemTitle());
         mQuantity.setText(getQuantity().toString());
-        dateView.setText(getDate().toString() + " days");
+        dateView.setText(getDate() + " days");
+        setPlace();
 
     }
 
