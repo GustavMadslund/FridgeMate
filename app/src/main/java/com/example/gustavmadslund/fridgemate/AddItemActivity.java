@@ -17,6 +17,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -43,6 +44,7 @@ public class AddItemActivity extends AppCompatActivity implements
     private RadioGroup mPlaceRadioGroup;
     private EditText mTitleText;
     private EditText mQuantity;
+    private ImageView mImageView;
 
     private AlarmManager mAlarmManager;
     private Intent mAlarmIntent;
@@ -56,12 +58,16 @@ public class AddItemActivity extends AppCompatActivity implements
         mTitleText = (EditText) findViewById(R.id.title);
         mQuantity = (EditText) findViewById(R.id.quantityItem);
         mPlaceRadioGroup = (RadioGroup) findViewById(R.id.radioGroupPlace);
+        mImageView = (ImageView) findViewById(R.id.imageView);
         dateView = (TextView) findViewById(R.id.textView);
 
         //Set hint text
         mTitleText.setHint("Name");
         mQuantity.setHint("Quantity");
         mQuantity.setText("1");
+        mImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+
+
 
         //Set the default date
         setDefaultDateTime();

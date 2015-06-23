@@ -1,10 +1,12 @@
 package com.example.gustavmadslund.fridgemate;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import com.example.gustavmadslund.fridgemate.FoodItem.Place;
@@ -21,6 +23,7 @@ public class EditItemActivity extends AppCompatActivity {
     private TextView mQuantity;
     private RadioGroup mPlaceRadioGroup;
     private FoodItem mFoodItem;
+    private ImageView mImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,7 @@ public class EditItemActivity extends AppCompatActivity {
         mQuantity = (TextView) findViewById(R.id.quantityItem);
         mPlaceRadioGroup = (RadioGroup) findViewById(R.id.radioGroupPlace);
         dateView = (TextView) findViewById(R.id.textDate);
+        mImageView = (ImageView) findViewById(R.id.imageView);
         Intent intent = getIntent();
         mFoodItem = new FoodItem(intent);
 
@@ -40,6 +44,7 @@ public class EditItemActivity extends AppCompatActivity {
         mQuantity.setText(getQuantity().toString());
         dateView.setText(getDate() + " days");
         setPlace();
+        mImageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
     }
 

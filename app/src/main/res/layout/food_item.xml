@@ -12,7 +12,8 @@
         android:src="@android:drawable/ic_menu_edit"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:background="@android:color/transparent" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -39,26 +40,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/progressBar"
-        android:layout_below="@+id/title"
         android:max="25"
         android:indeterminate="false"
         android:progress="0"
+        android:layout_below="@+id/editItem"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/editItem"
+        android:layout_alignEnd="@+id/editItem"
         android:layout_marginLeft="7dp"
-        android:layout_alignBottom="@+id/editItem"
-        android:layout_marginBottom="4dp"
-        android:layout_toLeftOf="@+id/editItem"
-        android:layout_toStartOf="@+id/editItem"
-        android:layout_marginRight="10dp" />
+        android:layout_marginRight="5dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="7dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/daysLeft"
-        android:layout_alignTop="@+id/checkBox"
-        android:layout_alignRight="@+id/progressBar"
-        android:layout_alignEnd="@+id/progressBar"
-        android:layout_marginTop="10dp" />
+        android:text="Freezer"
+        android:layout_alignBottom="@+id/title"
+        android:layout_toLeftOf="@+id/editItem"
+        android:layout_toStartOf="@+id/editItem"
+        android:layout_marginRight="10dp" />
 </RelativeLayout>

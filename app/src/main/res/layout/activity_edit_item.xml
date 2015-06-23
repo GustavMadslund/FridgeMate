@@ -18,11 +18,12 @@
             android:layout_weight="0.2"
             android:gravity="center_vertical"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:drawableLeft="@drawable/abc_btn_radio_to_on_mtrl_000"
+            android:drawableLeft="@android:drawable/ic_menu_sort_by_size"
             android:drawablePadding="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp" />
+            android:layout_marginRight="20dp"
+            android:textColor="@color/abc_secondary_text_material_light" />
 
         <TextView
             android:layout_width="match_parent"
@@ -32,11 +33,12 @@
             android:layout_weight="0.2"
             android:gravity="center_vertical"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:drawableLeft="@drawable/abc_btn_radio_to_on_mtrl_015"
+            android:drawableLeft="@android:drawable/ic_menu_compass"
             android:drawablePadding="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp" />
+            android:layout_marginRight="20dp"
+            android:textColor="@color/abc_secondary_text_material_light" />
 
         <RadioGroup
             android:layout_width="wrap_content"
@@ -55,7 +57,8 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:paddingLeft="10dp"
                 android:id="@+id/radioButtonFridge"
-                android:checked="true"/>
+                android:checked="true"
+                android:textColor="@color/abc_secondary_text_material_light" />
 
             <RadioButton
                 android:layout_width="wrap_content"
@@ -65,27 +68,28 @@
                 android:paddingLeft="10dp"
                 android:id="@+id/radioButtonFreezer"
                 android:checked="false"
-                android:layout_marginLeft="20dp" />
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/abc_secondary_text_material_light" />
         </RadioGroup>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.2">
+            android:layout_weight="0.09">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:drawableLeft="@drawable/abc_btn_radio_material"
+                android:drawableLeft="@android:drawable/ic_menu_week"
                 android:drawablePadding="10dp"
                 android:gravity="center"
                 android:text="Expires in: "
                 android:id="@+id/textView3"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="25dp"
                 android:layout_marginBottom="20dp"
-                android:textColor="#ff000000" />
+                android:textColor="@color/abc_secondary_text_material_light" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -93,7 +97,8 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:gravity="center"
                 android:layout_marginBottom="20dp"
-                android:id="@+id/textDate" />
+                android:id="@+id/textDate"
+                android:textColor="@color/abc_secondary_text_material_light" />
 
         </LinearLayout>
 
@@ -103,7 +108,7 @@
         android:layout_width="fill_parent"
         android:layout_height="200dp"
         android:id="@+id/imageView"
-        android:src="@color/button_material_light"
+        android:src="@mipmap/food"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
