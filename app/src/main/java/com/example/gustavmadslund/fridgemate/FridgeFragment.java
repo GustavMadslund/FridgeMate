@@ -26,6 +26,7 @@ import java.util.List;
 public class FridgeFragment extends ListFragment {
 
     FoodItemAdapter mAdapter;
+    private final String mPlace = "Fridge";
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -42,7 +43,7 @@ public class FridgeFragment extends ListFragment {
         View fridgeView = inflater.inflate(R.layout.fragment_layout, container, false);
         super.onCreate(savedInstanceState);
 
-        mAdapter = new FoodItemAdapter(getActivity(), fridgeView, "Fridge");
+        mAdapter = new FoodItemAdapter(getActivity(), fridgeView, mPlace);
         this.setListAdapter(mAdapter);
         
         Button addButton = (Button) fridgeView.findViewById(R.id.add_button);
@@ -79,6 +80,8 @@ public class FridgeFragment extends ListFragment {
                                     mTextView.setText(mAdapter.getCheckedBoxes() + " items selected");
 
                                     mAdapter.getCheckedItemList().clear();
+
+                                    mAdapter.getSharedPreferences().edit().putString(mPlace, mAdapter.getGson().toJson(mAdapter.getmItems(), mAdapter.getType())).commit();
 
                                 }
                             })

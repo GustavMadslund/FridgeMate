@@ -37,9 +37,16 @@ public class FoodItemAdapter extends BaseAdapter{
     private final String mPlace;
 
     private static final String TAG = "Fridge-Log";
+
+
+
     private SharedPreferences sharedPreferences;
     private Gson gson;
+
+
+
     Type type = new TypeToken<List<FoodItem>>(){}.getType();
+
 
     public FoodItemAdapter(Context context, View view, String place) {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
@@ -60,7 +67,7 @@ public class FoodItemAdapter extends BaseAdapter{
         mItems.add(item);
         notifyDataSetChanged();
 
-        sharedPreferences.edit().putString(mPlace,gson.toJson(mItems, type)).commit();
+        sharedPreferences.edit().putString(mPlace, gson.toJson(mItems, type)).commit();
     }
 
     //Clears the list adapter of all items.
@@ -188,6 +195,18 @@ public class FoodItemAdapter extends BaseAdapter{
     }
 
     public View getView(){return mView;}
+
+    public SharedPreferences getSharedPreferences() {
+        return sharedPreferences;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public Gson getGson() {
+        return gson;
+    }
 
 
 }

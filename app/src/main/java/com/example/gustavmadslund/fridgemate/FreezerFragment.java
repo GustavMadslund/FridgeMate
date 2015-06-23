@@ -18,6 +18,7 @@ import android.widget.Toast;
 public class FreezerFragment extends ListFragment{
 
     FoodItemAdapter mAdapter;
+    private final String mPlace = "Freezer";
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -33,7 +34,7 @@ public class FreezerFragment extends ListFragment{
 
         View freezerView = inflater.inflate(R.layout.fragment_layout, container, false);
 
-        mAdapter = new FoodItemAdapter(getActivity(), freezerView, "Freezer");
+        mAdapter = new FoodItemAdapter(getActivity(), freezerView, mPlace);
 
         this.setListAdapter(mAdapter);
 
@@ -70,6 +71,8 @@ public class FreezerFragment extends ListFragment{
                                     mTextView.setText(mAdapter.getCheckedBoxes() + " items selected");
 
                                     mAdapter.getCheckedItemList().clear();
+
+                                    mAdapter.getSharedPreferences().edit().putString(mPlace, mAdapter.getGson().toJson(mAdapter.getmItems(), mAdapter.getType())).commit();
 
                                 }
                             })
