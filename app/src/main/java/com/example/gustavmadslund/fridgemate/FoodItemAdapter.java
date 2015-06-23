@@ -147,6 +147,10 @@ public class FoodItemAdapter extends BaseAdapter{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, EditItemActivity.class);
+                intent.putExtra(FoodItem.QUANTITY, mFoodItem.getQuantity());
+                intent.putExtra(FoodItem.PLACE, mFoodItem.getPlace());
+                intent.putExtra(FoodItem.TITLE, mFoodItem.getTitle());
+                intent.putExtra(FoodItem.DATE, mFoodItem.getDateDiff());
                 mContext.startActivity(intent);
 
             }

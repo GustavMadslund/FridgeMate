@@ -42,7 +42,7 @@ public class FoodItem {
     FoodItem(Intent intent){
         mTitle = intent.getStringExtra(FoodItem.TITLE);
         mQuantity = intent.getIntExtra(FoodItem.QUANTITY, 1);
-        mPlace = Place.valueOf(intent.getStringExtra(FoodItem.PLACE));
+        mPlace = (Place) intent.getSerializableExtra(FoodItem.PLACE);
         mDateDiff = intent.getIntExtra(FoodItem.DATE,1);
     }
 
@@ -64,7 +64,7 @@ public class FoodItem {
 
         intent.putExtra(FoodItem.TITLE, title);
         intent.putExtra(FoodItem.QUANTITY, quantity);
-        intent.putExtra(FoodItem.PLACE, place.toString());
+        intent.putExtra(FoodItem.PLACE, place);
         intent.putExtra(FoodItem.DATE, date);
     }
 
