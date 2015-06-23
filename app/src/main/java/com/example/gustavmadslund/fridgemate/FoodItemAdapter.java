@@ -2,6 +2,8 @@ package com.example.gustavmadslund.fridgemate;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,24 +16,37 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.math.MathContext;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Mikkel on 19-06-2015.
  */
-public class FoodItemAdapter extends BaseAdapter {
+public class FoodItemAdapter extends BaseAdapter implements java.io.Serializable{
 
-    private final List<FoodItem> mItems = new ArrayList<FoodItem>();
+    private List<FoodItem> mItems = new ArrayList<FoodItem>();
     private final Context mContext;
     private int checkedBoxes = 0;
     private final View mView;
 
     private static final String TAG = "Fridge-Log";
+    private SharedPreferences sharedPreferences;
+    private Gson gson;
+    Type type = new TypeToken<List<FoodItem>>(){}.getType();
 
     public FoodItemAdapter(Context context, View view) {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        gson = new Gson();
         mContext = context;
         mView = view;
+
+        String mString = sharedPreferences.getString("Fridge","[]");
+        mItems = gson.fromJson(mString,type);
     }
 
     //Add a FoodItem to the adapter
@@ -41,6 +56,8 @@ public class FoodItemAdapter extends BaseAdapter {
 
         mItems.add(item);
         notifyDataSetChanged();
+
+        sharedPreferences.edit().putString("Fridge",gson.toJson(mItems, type)).commit();
     }
 
     //Clears the list adapter of all items.
@@ -137,6 +154,15 @@ public class FoodItemAdapter extends BaseAdapter {
 
         // Return the View you just created
         return itemLayout;
+    }
+
+    public List<FoodItem> getmItems(){
+        return mItems;
+    }
+
+    public void setmItems(List<FoodItem> mItems) {
+        this.mItems.addAll(mItems);
+        notifyDataSetChanged();
     }
 
     public ArrayList<FoodItem> getItemList() {return (ArrayList<FoodItem>) mItems;}
