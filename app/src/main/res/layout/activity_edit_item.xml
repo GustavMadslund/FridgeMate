@@ -20,11 +20,6 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:drawableLeft="@drawable/abc_btn_radio_to_on_mtrl_000"
             android:drawablePadding="10dp"
-            android:layout_below="@+id/imageView"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp" />
@@ -39,11 +34,6 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:drawableLeft="@drawable/abc_btn_radio_to_on_mtrl_015"
             android:drawablePadding="10dp"
-            android:layout_below="@+id/title"
-            android:layout_alignLeft="@+id/title"
-            android:layout_alignStart="@+id/title"
-            android:layout_alignRight="@+id/title"
-            android:layout_alignEnd="@+id/title"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp" />
@@ -54,9 +44,6 @@
             android:orientation="horizontal"
             android:id="@+id/radioGroupPlace"
             android:layout_weight="0.2"
-            android:layout_below="@+id/quantityItem"
-            android:layout_alignLeft="@+id/quantityItem"
-            android:layout_alignStart="@+id/quantityItem"
             android:paddingRight="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp">

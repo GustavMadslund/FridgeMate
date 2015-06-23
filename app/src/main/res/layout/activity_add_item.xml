@@ -11,7 +11,7 @@
         android:id="@+id/imageView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:src="@color/hint_foreground_material_light" />
+        android:src="#ff00bcd4" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -24,13 +24,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/title"
             android:layout_weight="0.2"
-            android:drawableLeft="@drawable/abc_btn_radio_to_on_mtrl_000"
+            android:drawableLeft="@android:drawable/ic_menu_sort_by_size"
             android:drawablePadding="10dp"
-            android:layout_below="@+id/imageView"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp" />
@@ -41,13 +36,8 @@
             android:id="@+id/quantityItem"
             android:inputType="number"
             android:layout_weight="0.2"
-            android:drawableLeft="@drawable/abc_btn_radio_to_on_mtrl_015"
+            android:drawableLeft="@android:drawable/ic_menu_compass"
             android:drawablePadding="10dp"
-            android:layout_below="@+id/title"
-            android:layout_alignLeft="@+id/title"
-            android:layout_alignStart="@+id/title"
-            android:layout_alignRight="@+id/title"
-            android:layout_alignEnd="@+id/title"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp" />
@@ -58,12 +48,9 @@
             android:orientation="horizontal"
             android:id="@+id/radioGroupPlace"
             android:layout_weight="0.2"
-            android:layout_below="@+id/quantityItem"
-            android:layout_alignLeft="@+id/quantityItem"
-            android:layout_alignStart="@+id/quantityItem"
             android:paddingRight="10dp"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="25dp">
+            android:layout_marginLeft="22dp">
 
             <RadioButton
                 android:layout_width="wrap_content"
@@ -72,7 +59,8 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:paddingLeft="10dp"
                 android:id="@+id/radioButtonFridge"
-                android:checked="true"/>
+                android:checked="true"
+                android:textColor="@color/abc_secondary_text_material_light" />
 
             <RadioButton
                 android:layout_width="wrap_content"
@@ -82,7 +70,8 @@
                 android:paddingLeft="10dp"
                 android:id="@+id/radioButtonFreezer"
                 android:checked="false"
-                android:layout_marginLeft="20dp" />
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/abc_secondary_text_material_light" />
         </RadioGroup>
 
         <LinearLayout
@@ -93,9 +82,6 @@
             android:layout_marginTop="20dp"
             android:weightSum="1"
             android:id="@+id/linearLayout"
-            android:layout_below="@+id/radioGroupPlace"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:layout_marginBottom="20dp">
 
             <ImageView
@@ -103,39 +89,42 @@
                 android:layout_height="40dp"
                 android:layout_weight="0.2"
                 android:id="@+id/imageDate"
-                android:src="@drawable/abc_btn_radio_to_on_mtrl_000"
-                android:layout_marginLeft="20dp" />
+                android:src="@android:drawable/ic_menu_week"
+                android:layout_marginLeft="19dp" />
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_weight="0.3"
+                android:layout_weight="0.19"
                 android:layout_width="85dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="10dp">
+                android:layout_height="49dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Expires:"
                     android:id="@+id/textViewExpires"
-                    android:textColor="#ff000000" />
+                    android:textColor="#ff000000"
+                    android:layout_marginTop="5dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Some dates"
                     android:id="@+id/textView"
-                    android:textColor="#ff7a7a7a" />
+                    android:textColor="#ff7a7a7a"
+                    android:layout_marginTop="5dp" />
 
             </LinearLayout>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.4"
                 android:text="Set Expiration Date"
                 android:id="@+id/button"
-                android:layout_marginRight="20dp"
+                android:background="#ff00bcd4"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="#ffffffff"
                 android:layout_marginLeft="10dp" />
 
         </LinearLayout>
