@@ -37,11 +37,7 @@ public class AlarmNotification extends BroadcastReceiver {
 
         Bundle extras = intent.getExtras();
 
-        if (place == null ||place == ""){
-            item = "item";
-        } else {
-            item = extras.getString("NAME_OF_ITEM");
-        }
+        item = extras.getString("NAME_OF_ITEM", "item");
 
         place = extras.getString("PLACE_OF_ITEM", "inventory");
 

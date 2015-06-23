@@ -49,6 +49,9 @@ public class AddItemActivity extends AppCompatActivity implements
     private AlarmManager mAlarmManager;
     private Intent mAlarmIntent;
     private PendingIntent mAlarmPendingIntent;
+    private int mYear;
+    private int mMonthOfYear;
+    private int mDayOfMonth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,18 +87,6 @@ public class AddItemActivity extends AppCompatActivity implements
 
         // Gets the AlarmManager to handle alarms
         mAlarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
-        // Intent to be broadcasted as a notification
-        mAlarmIntent = new Intent(AddItemActivity.this, AlarmNotification.class);
-
-        // Puts the user-defined item-name and place with the intent to show with notification later on
-        mAlarmIntent.putExtra("NAME_OF_ITEM",  getToDoTitle().toString());
-        mAlarmIntent.putExtra("PLACE_OF_ITEM",  getPlaceToString());
-
-        // PendingIntent that holds the above intent
-        mAlarmPendingIntent = PendingIntent.getBroadcast(AddItemActivity.this, 0, mAlarmIntent, 0);
-
-        Log.v("Notification","Intent created");
 
     }
 
@@ -133,6 +124,7 @@ public class AddItemActivity extends AppCompatActivity implements
         Integer dateDifference = getDateDiff(mDate);
         Intent data = new Intent();
         FoodItem.packageIntent(data, titleString, quantity, place, dateDifference);
+        setAlarm(mYear, mMonthOfYear, mDayOfMonth);
 
         setResult(RESULT_OK, data);
         finish();
@@ -206,6 +198,10 @@ public class AddItemActivity extends AppCompatActivity implements
                           int dayOfMonth) {
         setDateString(year, monthOfYear, dayOfMonth);
 
+        mYear = year;
+        mMonthOfYear = monthOfYear;
+        mDayOfMonth = dayOfMonth;
+
         dateView.setText(dateString);
 
         Calendar cal = Calendar.getInstance();
@@ -220,11 +216,23 @@ public class AddItemActivity extends AppCompatActivity implements
 
         Log.v("Notification", "Data set");
         // Passes the entered date-options to method for alarm-creation
-        setAlarm(year, monthOfYear, dayOfMonth);
+
 
     }
 
     public void setAlarm(int year, int monthOfYear, int dayOfMonth){
+        // Intent to be broadcasted as a notification
+        mAlarmIntent = new Intent(AddItemActivity.this, AlarmNotification.class);
+
+        // Puts the user-defined item-name and place with the intent to show with notification later on
+        mAlarmIntent.putExtra("NAME_OF_ITEM",  getToDoTitle().toString());
+        mAlarmIntent.putExtra("PLACE_OF_ITEM",  getPlaceToString());
+
+        // PendingIntent that holds the above intent
+        mAlarmPendingIntent = PendingIntent.getBroadcast(AddItemActivity.this, 0, mAlarmIntent, 0);
+
+        Log.v("Notification","Intent created");
+
         // Creates Calendar-object to convert date-format to time in milliseconds
         Calendar mAlarmDate = Calendar.getInstance();
         mAlarmDate.setTimeInMillis(System.currentTimeMillis());
