@@ -10,21 +10,24 @@
             android:layout_alignParentRight="true"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="Delete"/>
+            android:text="Delete"
+            android:background="@android:color/transparent"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
-            android:id="@+id/items_selected"/>
+            android:id="@+id/items_selected"
+            android:layout_marginBottom="15dp"/>
 
         <Button android:id="@+id/add_button"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="Add"/>
+            android:text="Add"
+            android:background="@android:color/transparent"/>
 
         <ListView android:id="@android:id/list"
             android:layout_alignParentTop="true"
