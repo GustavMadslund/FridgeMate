@@ -1,5 +1,6 @@
 package com.example.gustavmadslund.fridgemate;
 
+import android.content.Intent;
 import android.support.v4.app.ListFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,16 +14,32 @@ import android.widget.Toast;
  */
 public class FreezerFragment extends ListFragment{
 
+    FoodItemAdapter mAdapter;
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //TODO - change result code to proper resultcode
+        if (requestCode == 1 && resultCode == resultCode){
+            FoodItem foodItem = new FoodItem(data);
+            mAdapter.add(foodItem);
+        }
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View freezerView = inflater.inflate(R.layout.fragment_layout, container, false);
 
+        mAdapter = new FoodItemAdapter(getActivity(), freezerView);
+
+        this.setListAdapter(mAdapter);
+
         Button addButton = (Button) freezerView.findViewById(R.id.add_button);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Add-button pressed in freezer", Toast.LENGTH_SHORT).show();
+                Intent addIntent = new Intent(getActivity(), AddItemActivity.class);
+                startActivityForResult(addIntent, 2);
             }
         });
 
