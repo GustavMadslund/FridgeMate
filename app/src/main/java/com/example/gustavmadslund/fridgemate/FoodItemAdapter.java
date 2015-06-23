@@ -159,7 +159,7 @@ public class FoodItemAdapter extends BaseAdapter{
         });
 
         final TextView daysView = (TextView) itemLayout.findViewById(R.id.daysLeft);
-        daysView.setText(String.valueOf((int) mFoodItem.getDateDiff()) + "days left");
+        daysView.setText(String.valueOf((int) mFoodItem.getDateDiff()) + " days left");
 
         final ProgressBar progressBar = (ProgressBar) itemLayout.findViewById(R.id.progressBar);
         progressBar.setProgress(progressBar.getMax() - (int) mFoodItem.getDateDiff());

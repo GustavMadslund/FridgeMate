@@ -64,7 +64,7 @@ public class FridgeFragment extends ListFragment {
                 } else {
                     new AlertDialog.Builder(getActivity())
                             .setTitle("Delete items")
-                            .setMessage("Delete " + mAdapter.getCheckedItemList().size() + " items?")
+                            .setMessage("Delete " + mAdapter.getCheckedItemList().size() + " item(s) from fridge?")
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     for (FoodItem foodItem : mAdapter.getCheckedItemList()) {
