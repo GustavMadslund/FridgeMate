@@ -1,5 +1,6 @@
 package com.example.gustavmadslund.fridgemate;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -135,7 +136,7 @@ public class FoodItemAdapter extends BaseAdapter{
 
                     TextView mTextView = (TextView) mView.findViewById(R.id.items_selected);
                     mTextView.setText(checkedBoxes + " items selected");
-                    } else {
+                } else {
                     checkedBoxes--;
 
                     mCheckedItems.remove(mFoodItem);
@@ -144,7 +145,7 @@ public class FoodItemAdapter extends BaseAdapter{
 
                     TextView mTextView = (TextView) mView.findViewById(R.id.items_selected);
                     mTextView.setText(checkedBoxes + " items selected");
-                    }
+                }
 
             }
         });
@@ -160,7 +161,11 @@ public class FoodItemAdapter extends BaseAdapter{
                 intent.putExtra(FoodItem.PLACE, mFoodItem.getPlace());
                 intent.putExtra(FoodItem.TITLE, mFoodItem.getTitle());
                 intent.putExtra(FoodItem.DATE, mFoodItem.getDateDiff());
-                mContext.startActivity(intent);
+                intent.putExtra("Index", getItemList().indexOf(mFoodItem));
+
+                //Start activity for result!!!
+                //mContext.startActivity(intent);
+                ((Activity) mContext).startActivityForResult(intent, 4);
 
             }
         });

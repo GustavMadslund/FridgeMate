@@ -23,6 +23,7 @@ public class EditItemActivity extends AppCompatActivity {
     private TextView mQuantity;
     private RadioGroup mPlaceRadioGroup;
     private FoodItem mFoodItem;
+    private int index;
     private ImageView mImageView;
 
     @Override
@@ -37,7 +38,7 @@ public class EditItemActivity extends AppCompatActivity {
         mImageView = (ImageView) findViewById(R.id.imageView);
         Intent intent = getIntent();
         mFoodItem = new FoodItem(intent);
-
+        index = intent.getIntExtra("Index", 0);
 
 
         mTitleText.setText(getItemTitle());
@@ -79,8 +80,11 @@ public class EditItemActivity extends AppCompatActivity {
     private void editItem() {
         // TODO - Finish edit item
         Place place = setPlace();
+        String name = setName();
         Intent data = new Intent();
         data.putExtra(FoodItem.PLACE,place);
+        data.putExtra(FoodItem.TITLE, name);
+        data.putExtra("Index", index);
 
         setResult(RESULT_OK, data);
         finish();
@@ -103,6 +107,10 @@ public class EditItemActivity extends AppCompatActivity {
                 return FoodItem.Place.FRIDGE;
             }
         }
+    }
+
+    private String setName() {
+        return String.valueOf(mTitleText.getText());
     }
 
     private Integer getDate() {return (int) mFoodItem.getDateDiff();}

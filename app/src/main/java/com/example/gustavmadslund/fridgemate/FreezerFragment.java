@@ -23,9 +23,11 @@ public class FreezerFragment extends ListFragment{
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         //TODO - change result code to proper resultcode
-        if (requestCode == 2 && resultCode == resultCode){
-            FoodItem foodItem = new FoodItem(data);
-            mAdapter.add(foodItem);
+        if (requestCode == 2){
+            if(resultCode == MainActivity.RESULT_OK){
+                FoodItem foodItem = new FoodItem(data);
+                mAdapter.add(foodItem);
+            }
         }
     }
 

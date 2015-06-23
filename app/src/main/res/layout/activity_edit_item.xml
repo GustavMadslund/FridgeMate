@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/imageView">
 
-        <TextView
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/title"
@@ -25,7 +25,7 @@
             android:layout_marginRight="20dp"
             android:textColor="@color/abc_secondary_text_material_light" />
 
-        <TextView
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/quantityItem"

@@ -1,5 +1,6 @@
 package com.example.gustavmadslund.fridgemate;
 
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 
 
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import java.io.File;
 import java.io.IOException;
@@ -75,6 +77,34 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     @Override
     public void onTabReselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction ft) {
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //TODO - change result code to proper resultcode
+
+        Log.v("Something something dark side", data.toString());
+        FridgeFragment fridgeFragment = (FridgeFragment) mFragmentAdapter.getItem(0);
+
+
+        /*if (requestCode == 4) {
+            if(resultCode == MainActivity.RESULT_OK){
+                Log.v("Something something dark side", "Result ok");
+                FoodItemAdapter mAdapter = fridgeFragment.getFoodItemAdapter();
+                FoodItem foodItem = new FoodItem(data);
+
+                if(fridgeFragment.getFoodItemAdapter() == null) {
+                    Log.v("Something something dark side", "mAdapter is null");
+                }
+
+                mAdapter.add(foodItem);
+                mAdapter.getItemList().remove(data.getIntExtra("Index", 0));
+            }
+            if(resultCode == MainActivity.RESULT_CANCELED){
+                FoodItemAdapter mAdapter = fridgeFragment.mAdapter;
+                mAdapter.getItemList().remove(data.getIntExtra("Index", 0));
+            }
+        }*/
     }
 }
 
