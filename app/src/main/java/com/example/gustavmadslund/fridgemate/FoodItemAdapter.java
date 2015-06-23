@@ -26,6 +26,7 @@ public class FoodItemAdapter extends BaseAdapter {
     private final Context mContext;
     private int checkedBoxes = 0;
     private final View mView;
+    private final List<FoodItem> mCheckedItems = new ArrayList<FoodItem>();
 
     private static final String TAG = "Fridge-Log";
 
@@ -91,6 +92,7 @@ public class FoodItemAdapter extends BaseAdapter {
 
         selectedView.setChecked(mFoodItem.getChecked());
 
+
         // Listener is called when user toggles the selected checkbox
 
         selectedView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -101,12 +103,16 @@ public class FoodItemAdapter extends BaseAdapter {
                 if (isChecked) {
                     checkedBoxes++;
 
+                    mCheckedItems.add(mFoodItem);
+
                     mFoodItem.setChecked(true);
 
                     TextView mTextView = (TextView) mView.findViewById(R.id.items_selected);
                     mTextView.setText(checkedBoxes + " items selected");
                     } else {
                     checkedBoxes--;
+
+                    mCheckedItems.remove(mFoodItem);
 
                     mFoodItem.setChecked(false);
 
@@ -140,6 +146,16 @@ public class FoodItemAdapter extends BaseAdapter {
     }
 
     public ArrayList<FoodItem> getItemList() {return (ArrayList<FoodItem>) mItems;}
+
+    public ArrayList<FoodItem> getCheckedItemList(){return (ArrayList<FoodItem>) mCheckedItems;}
+
+    public int getCheckedBoxes(){return checkedBoxes;}
+
+    public void setCheckedBoxes(int checkedBoxes){
+        this.checkedBoxes = checkedBoxes;
+    }
+
+    public View getView(){return mView;}
 
 
 }

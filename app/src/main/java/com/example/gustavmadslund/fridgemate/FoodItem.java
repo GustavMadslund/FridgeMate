@@ -73,7 +73,7 @@ public class FoodItem {
     }
 
     public void setChecked(boolean Checked){
-        this.CHECKED = CHECKED;
+        this.CHECKED = Checked;
      }
 
     public boolean getChecked(){
